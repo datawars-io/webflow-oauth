@@ -26,6 +26,9 @@ const client = google.accounts.oauth2.initCodeClient({
           metadata: utmTagsObject,
         }),
       });
+      console.log(response);
+      console.log(response.headers);
+      console.log(response.headers?.getSetCookie());
       const user = await response.json();
 
       if (user.id) {
