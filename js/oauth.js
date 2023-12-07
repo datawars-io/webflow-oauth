@@ -17,6 +17,7 @@ const client = google.accounts.oauth2.initCodeClient({
     try {
       const response = await fetch(apiGoogleOauthUrl, {
         method: "POST",
+        credentials: "include",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/x-www-form-urlencoded",
@@ -26,14 +27,10 @@ const client = google.accounts.oauth2.initCodeClient({
           metadata: utmTagsObject,
         }),
       });
-      console.log(response);
-      console.log(response.headers);
-      console.log(response.headers?.getSetCookie());
       const user = await response.json();
 
       if (user.id) {
-        console.log("REDIRECT");
-        // window.location.href = appUrl;
+        window.location.href = appUrl;
       } else {
         console.error(user);
       }
