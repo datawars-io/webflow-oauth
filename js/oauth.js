@@ -30,7 +30,7 @@ const client = google.accounts.oauth2.initCodeClient({
 
       if (user.id) {
         console.log("REDIRECT");
-        window.location.href = appUrl;
+        // window.location.href = appUrl;
       } else {
         console.error(user);
       }
