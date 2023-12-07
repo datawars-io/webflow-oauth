@@ -24,10 +24,10 @@ const client = google.accounts.oauth2.initCodeClient({
           Accept: "application/json",
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
+        body: {
           code,
           metadata: utmTagsObject,
-        }),
+        },
       });
       const user = await response.json();
 
