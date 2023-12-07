@@ -14,16 +14,6 @@ const client = google.accounts.oauth2.initCodeClient({
       localStorage.getItem("dw_ref_params") || {}
     );
 
-    function objectToFormData(obj) {
-      const formData = new FormData();
-
-      Object.entries(obj).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-
-      return formData;
-    }
-
     try {
       const response = await fetch(apiGoogleOauthUrl, {
         method: "POST",
@@ -31,7 +21,7 @@ const client = google.accounts.oauth2.initCodeClient({
           Accept: "application/json",
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: objectToFormData({
+        body: new URLSearchParams({
           code,
           metadata: utmTagsObject,
         }),
